@@ -12,7 +12,7 @@
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 - **Player Completo:** Toca músicas e playlists do YouTube.
 - **Dashboard Web Interativo:** Controle o player, veja a fila, adicione músicas e reordene arrastando e soltando.
@@ -23,7 +23,7 @@
 
 ---
 
-## 🚀 Guia de Instalação (Self-Hosting)
+## Guia de Instalação (Self-Hosting)
 
 Este guia cobre a instalação em ambientes **Windows** (para testes) e **Linux** (para produção 24/7).
 
@@ -176,7 +176,7 @@ Este projeto usa um arquivo `.env` para gerenciar as chaves secretas, mantendo-a
 
 ---
 
-### 🌐 Acessando o Dashboard Web
+### Acessando o Dashboard Web
 
 - Se estiver rodando em um servidor Linux, libere a porta no firewall: `sudo ufw allow 8000/tcp`.
 - Abra seu navegador e acesse: `http://IP_DA_MAQUINA_DO_BOT:8000`.
