@@ -75,7 +75,7 @@ Abra seu terminal (CMD ou PowerShell no Windows, Terminal no Linux) e siga os pa
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/DevisBorg/trindas_bot.git](https://github.com/DevisBorg/trindas_bot.git) trindas-bot
+    git clone (https://github.com/DevisBorg/trindas_bot.git) trindas-bot
     cd trindas-bot
     ```
 
