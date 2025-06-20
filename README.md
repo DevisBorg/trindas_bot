@@ -81,7 +81,7 @@ Abra seu terminal (CMD ou PowerShell no Windows, Terminal no Linux) e siga os pa
 
 2.  **Crie o Ambiente Virtual:**
     ```bash
-    python -m venv venv
+    python3 -m venv venv
     ```
 
 3.  **Ative o Ambiente Virtual:**
