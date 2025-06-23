@@ -12,7 +12,7 @@
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 - **Player Completo:** Toca músicas e playlists do YouTube.
 - **Dashboard Web Interativo:** Controle o player, veja a fila, adicione músicas e reordene arrastando e soltando.
@@ -23,7 +23,7 @@
 
 ---
 
-## 🚀 Guia de Instalação (Self-Hosting)
+## Guia de Instalação (Self-Hosting)
 
 Este guia cobre a instalação em ambientes **Windows** (para testes) e **Linux** (para produção 24/7).
 
@@ -75,13 +75,13 @@ Abra seu terminal (CMD ou PowerShell no Windows, Terminal no Linux) e siga os pa
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/DevisBorg/trindas_bot.git](https://github.com/DevisBorg/trindas_bot.git) trindas-bot
+    git clone https://github.com/DevisBorg/trindas_bot.git trindas-bot
     cd trindas-bot
     ```
 
 2.  **Crie o Ambiente Virtual:**
     ```bash
-    python -m venv venv
+    python3 -m venv venv
     ```
 
 3.  **Ative o Ambiente Virtual:**
@@ -176,7 +176,7 @@ Este projeto usa um arquivo `.env` para gerenciar as chaves secretas, mantendo-a
 
 ---
 
-### 🌐 Acessando o Dashboard Web
+### Acessando o Dashboard Web
 
 - Se estiver rodando em um servidor Linux, libere a porta no firewall: `sudo ufw allow 8000/tcp`.
 - Abra seu navegador e acesse: `http://IP_DA_MAQUINA_DO_BOT:8000`.
