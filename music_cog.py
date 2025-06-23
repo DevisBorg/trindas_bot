@@ -182,7 +182,8 @@ class MusicCog(commands.Cog, name="Música"):
         await self.play_next_or_cleanup(text_channel, requester)
 
     async def play_next_or_cleanup(self, text_channel, requester):
-        guild_id = text_channel.guild.id; loop_mode = self.loop_states.get(guild_id, 'off')
+        guild = text_channel.guild
+        guild_id = guild.id; loop_mode = self.loop_states.get(guild_id, 'off')
         if loop_mode == 'song' and self.current_song.get(guild_id): self.queues.setdefault(guild_id, []).insert(0, self.current_song[guild_id])
         elif loop_mode == 'queue' and self.current_song.get(guild_id): self.queues.setdefault(guild_id, []).append(self.current_song[guild_id])
         
@@ -194,13 +195,13 @@ class MusicCog(commands.Cog, name="Música"):
                 processed_info['requested_by'] = next_song_info.get('requested_by'); song_info = processed_info
             else: song_info = next_song_info
             
-            self.current_song[guild_id] = song_info; vc = text_channel.guild.voice_client
+            self.current_song[guild_id] = song_info; vc = guild.voice_client
             if vc and vc.is_connected():
                 volume = self.volume_levels.get(guild_id, 1.0); source = discord.FFmpegPCMAudio(song_info['source'], **FFMPEG_OPTS)
                 player = discord.PCMVolumeTransformer(source, volume=volume)
                 vc.play(player, after=lambda e: self.after_playing_proxy(e, text_channel, requester)); self.start_times[guild_id] = time.time()
-                await self.update_discord_player_message(guild_id)
-        else: await self.cleanup(text_channel.guild)
+                await self.broadcast_queue_update(guild_id)
+        else: await self.cleanup(guild)
 
     async def _add_to_queue_and_play(self, requester, text_channel, query: str):
         guild = text_channel.guild
@@ -272,7 +273,7 @@ class MusicCog(commands.Cog, name="Música"):
         for guild_id in list(self.player_views.keys()):
             guild = self.bot.get_guild(guild_id)
             if guild and guild.voice_client and (guild.voice_client.is_playing() or guild.voice_client.is_paused()):
-                await self.update_discord_player_message(guild_id)
+                await self.broadcast_queue_update(guild_id)
 
     @update_np_message.before_loop
     async def before_update_np(self): await self.bot.wait_until_ready()

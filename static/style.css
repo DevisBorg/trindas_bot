@@ -16,15 +16,58 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helv
 .play-btn:hover { transform: scale(1.05); }
 .progress-container { display: flex; align-items: center; gap: 8px; width: 100%; max-width: 500px; margin-top: 5px; font-size: 0.8em; }
 .progress-bar-background { flex-grow: 1; background-color: #535353; height: 4px; border-radius: 2px; }
-#progress-bar-foreground { width: 0%; background-color: #b3b3b3; height: 100%; border-radius: 2px; }
-.progress-bar-background:hover #progress-bar-foreground { background-color: #1db954; }
+#progress-bar-foreground { width: 0%; background-color: #1db954; /* MUDANÇA: Cor verde por padrão */ height: 100%; border-radius: 2px; transition: background-color 0.2s, box-shadow 0.2s; }
+.progress-bar-background:hover #progress-bar-foreground { box-shadow: 0 0 5px #1db954; /* Efeito de glow */ }
 .extra-controls { display: flex; align-items: center; flex: 1; min-width: 180px; justify-content: flex-end; gap: 15px; }
-input[type=range] { width: 100px; -webkit-appearance: none; background: transparent; cursor: pointer;}
-input[type=range]::-webkit-slider-runnable-track { height: 4px; background: #535353; border-radius: 2px; }
-input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; margin-top: -4px; height: 12px; width: 12px; background: #fff; border-radius: 50%; }
-input[type=range]:hover::-webkit-slider-runnable-track { background: #1db954; }
+
+/* MUDANÇA: Estilização complexa do slider de volume */
+input[type=range] { width: 100px; -webkit-appearance: none; background: transparent; cursor: pointer; }
+input[type=range]:focus { outline: none; }
+/* Track do slider para Chrome/Safari/Edge */
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: linear-gradient(to right, #1db954 var(--volume-percentage, 100%), #535353 var(--volume-percentage, 100%));
+    border-radius: 2px;
+}
+/* Thumb (bolinha) do slider */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    margin-top: -4px;
+    height: 12px;
+    width: 12px;
+    background: #fff;
+    border-radius: 50%;
+    transition: box-shadow 0.2s;
+}
+input[type=range]:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 8px #fff; /* Efeito de glow na bolinha */
+}
+
+/* Estilização para Firefox (similar) */
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #535353;
+    border-radius: 2px;
+}
+input[type=range]::-moz-range-progress {
+    background-color: #1db954;
+    height: 4px;
+    border-radius: 2px;
+}
+input[type=range]::-moz-range-thumb {
+    height: 12px;
+    width: 12px;
+    background: #fff;
+    border-radius: 50%;
+    border: none;
+}
+
 #queue-container { margin-top: 20px; }
-#queue-list { list-style: none; padding: 0; }
+#queue-list { list-style: none; padding: 0; max-height: 65vh; overflow-y: auto; padding-right: 10px; }
 .queue-item { display: flex; align-items: center; background-color: transparent; margin-bottom: 8px; padding: 10px; border-radius: 4px; position: relative;}
 .queue-item:hover { background-color: #2a2a2a; }
 .queue-item-drag-handle { cursor: grab; margin-right: 15px; color: #99aab5; }
@@ -48,4 +91,5 @@ button, select { padding: 10px; border-radius: 20px; border: none; margin: 5px; 
     .progress-container { width: 90%; }
     #add-song-container { flex-direction: column; }
     #add-song-container input { width: calc(100% - 20px); margin-bottom: 10px; }
+    #queue-list { max-height: 50vh; }
 }
