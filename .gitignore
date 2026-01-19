@@ -1,0 +1,9 @@
+/.env
+/config.py
+/data
+/help_cog.py
+/requirements.txt
+/static
+/templates
+/venv
+/__pycache__
