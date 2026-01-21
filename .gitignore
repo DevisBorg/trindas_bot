@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /.env
 /config.py
 /data
@@ -7,3 +8,11 @@
 /templates
 /venv
 /__pycache__
+=======
+.env
+venv/
+__pycache__/
+*.pyc
+data/
+discord.log
+>>>>>>> eccc786b906f7bebe3a50f2d69a16bc23468add7

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard do Bot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="main-container">
+        <div id="top-bar">
+            <div id="guild-selector-container">
+                <select id="guild-select"><option>-- Carregando Servidores --</option></select>
+            </div>
+            <div id="user-info"></div>
+        </div>
+        <div id="dashboard-content" style="display: none;">
+            <div id="add-song-container">
+                <input type="text" id="song-query-input" placeholder="Nome ou link da música...">
+                <button id="add-song-btn">Adicionar à Fila</button>
+            </div>
+            <div id="queue-container">
+                <h2>Fila de Músicas</h2>
+                <ul id="queue-list"></ul>
+            </div>
+        </div>
+    </div>
+    <div id="player-bar">
+        <div class="song-info">
+            <img id="current-song-art" src="https://i.imgur.com/gse3cPC.png" alt="Capa">
+            <div id="current-song-details">
+                <div id="current-song-title">Selecione um servidor</div>
+                <div id="current-song-requester">e toque uma música</div>
+            </div>
+        </div>
+        <div class="player-controls">
+            <div class="top-controls">
+                <button id="shuffle-btn" class="control-btn" title="Embaralhar"><i class="fas fa-random"></i></button>
+                <button id="prev-btn" class="control-btn" title="Anterior"><i class="fas fa-step-backward"></i></button>
+                <button id="play-pause-btn" class="control-btn play-btn" title="Tocar/Pausar"><i class="fas fa-play"></i></button>
+                <button id="skip-btn" class="control-btn" title="Pular"><i class="fas fa-step-forward"></i></button>
+                <button id="loop-btn" class="control-btn" title="Repetir"><i class="fas fa-repeat"></i></button>
+            </div>
+            <div class="progress-container">
+                <span id="progress-time">00:00</span>
+                <div class="progress-bar-background"><div id="progress-bar-foreground"></div></div>
+                <span id="total-time">00:00</span>
+            </div>
+        </div>
+        <div class="extra-controls">
+            <button id="leave-btn" class="control-btn" title="Desconectar"><i class="fas fa-sign-out-alt"></i></button>
+            <i class="fas fa-volume-down"></i>
+            <input type="range" id="volume-slider" min="0" max="150" value="100" title="Volume">
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
